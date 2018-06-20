@@ -16,9 +16,18 @@
 const Route = use('Route')
 
 
-  Route.post('api/auth/register', 'UserController.register');
-  Route.post('api/auth/login', 'UserController.login');
 
+Route.group(() => {
+  Route.post('auth/register', 'UserController.register');
+  Route.post('auth/login', 'UserController.login');
+
+  Route.get('todos', 'TodoController.index').middleware('auth');
+  Route.post('todos', 'TodoController.create').middleware('auth');
+  
+  
+ 
+})
+  .prefix('api');
 
 
 
