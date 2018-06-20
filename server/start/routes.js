@@ -23,7 +23,14 @@ Route.group(() => {
 
   Route.get('todos', 'TodoController.index').middleware('auth');
   Route.post('todos', 'TodoController.create').middleware('auth');
+  Route.delete('todos/:id', 'TodoController.destroy').middleware('auth');
+  Route.patch('todos/:id', 'TodoController.update').middleware('auth');
   
+  Route.get('todos/:id/tasks', 'TaskController.index').middleware('auth');
+  Route.post('todos/:id/tasks', 'TaskController.create').middleware('auth');
+  
+  Route.delete('tasks/:id', 'TaskController.destroy').middleware('auth');
+  Route.patch('tasks/:id', 'TaskController.update').middleware('auth');
   
  
 })
