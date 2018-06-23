@@ -9,14 +9,14 @@
       </v-toolbar-items>
     <v-spacer></v-spacer>
     <v-toolbar-items class="hidden-sm-and-down">
-      <v-btn flat to='/SignUp' v-if="!isLoggedIn">
+      <v-btn flat to='/Register' v-if="!isLoggedIn" >
         <v-icon class="mr-2">account_box</v-icon>
         Sign Up</v-btn>
       <v-btn flat v-if="!isLoggedIn">
         <v-icon class="mr-2">fingerprint</v-icon>
-        Sign In
+        LogIn
         </v-btn>
-      <v-btn flat v-if="isLoggedIn" @click='setToken(null)'>
+      <v-btn flat v-if="isLoggedIn" @click='logout'>
         <v-icon class="mr-2">exit_to_app</v-icon>
          Log Out</v-btn>
         <v-btn flat>
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { mapGetters, mapMutations } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
   computed: {
@@ -38,8 +38,8 @@ export default {
     ]),
   },
   methods: {
-    ...mapMutations('authentication', [
-      'setToken',
+    ...mapActions('authentication', [
+      'logout',
     ]),
   },
 };
